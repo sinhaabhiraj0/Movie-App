@@ -1,19 +1,33 @@
 <%- include("./partials/header")%>
-<div class="container">
+<style>
+.img-fluid{
+    background: url('https://png.pngtree.com/thumb_back/fw800/back_pic/05/09/26/685983d002c54c0.jpg');
+    background-repeat: no-repeat;
+  background-size: cover;
+}</style>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Acme&family=Ultra&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Acme&family=Berkshire+Swash&family=Ultra&display=swap" rel="stylesheet">
+<div class="img-fluid">
     <%if(moviesDump.Response==='False'){%>
-        <h1>Movie not found!</h1>
+        <h1 style="text-align: center;color: white;margin-top: 200px;font-family: 'Acme', sans-serif;
+        font-family: 'Berkshire Swash', cursive;
+        font-family: 'Ultra', serif;">Movie not found!</h1>
         <%}else{%>
-            <h1>Result goes here</h1>
+        <h1 style="text-align:center;color: white;font-family: 'Acme', sans-serif;
+        font-family: 'Berkshire Swash', cursive;
+        font-family: 'Ultra', serif;">Search results for : <%=search %></h1>
             
                 
  <div class="row">
     <%moviesDump['Search'].forEach(function(movie){%>
-    <div class="card" style="width: 18rem;">
-         <img src="<%=movie.Poster %>" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title"><%=movie.Title %></h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="/result/<%=movie.imdbID%>" class="btn btn-primary">Know more</a>
+    <div class="card" style="width: 18rem;margin-top: 20px;margin-inline: 40px;">
+         <img src="<%=movie.Poster %>" class="card-img-top" alt="Image not found!">
+        <div class="card-body" style="text-align: center;">
+            <h5 class="card-title"style="font-family: 'Acme', sans-serif;
+            font-family: 'Ultra', serif;"><%=movie.Title %></h5>
+            <a href="/result/<%=movie.imdbID%>" class="btn btn-primary" style="margin-top: 10px;">Know more</a>
         </div>
     </div>
                   <%})%>
@@ -21,7 +35,6 @@
 
 </div>
         <%}%>
-    
 </div>
 <%- include("./partials/footer")%>
 

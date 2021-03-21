@@ -8,9 +8,17 @@ app.set("view engine","ejs");
 app.use('/public',express.static('public'));
 
 app.get('/', (req,res)=>{
-    //res.send('Home Page-Abhiraj');
     res.render("home");
 })
+
+app.get('/about', (req,res)=>{
+    res.render("about_page");
+})
+
+app.get('/contact', (req,res)=>{
+    res.render("contact");
+})
+
 app.get('/result', (req,res)=>{
     console.log(req.query)
     const url=`http://www.omdbapi.com/?apikey=${process.env.API_KEY}&s=${req.query.movieName}`;
@@ -18,7 +26,7 @@ app.get('/result', (req,res)=>{
         if(!error && response.statusCode===200){
             const data=JSON.parse(body);
             //res.send(data)
-            res.render("result",{moviesDump:data});
+            res.render("result",{moviesDump:data,search:req.query.movieName});
         }else{
             res.send('Something went wrong');
         }
